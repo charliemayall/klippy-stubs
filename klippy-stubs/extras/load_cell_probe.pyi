@@ -1,4 +1,12 @@
-from . import ads1220 as ads1220, ads131m0x as ads131m0x, hx71x as hx71x, load_cell as load_cell, manual_probe as manual_probe, probe as probe, trigger_analog as trigger_analog
+from . import (
+    ads1220 as ads1220,
+    ads131m0x as ads131m0x,
+    hx71x as hx71x,
+    load_cell as load_cell,
+    manual_probe as manual_probe,
+    probe as probe,
+    trigger_analog as trigger_analog,
+)
 from _typeshed import Incomplete
 
 np: Incomplete
@@ -18,12 +26,29 @@ class ParamHelper:
     above: Incomplete
     below: Incomplete
     max_len: Incomplete
-    def __init__(self, config, name, type_name, default=None, minval=None, maxval=None, above=None, below=None, max_len=None) -> None: ...
-    def get(self, gcmd=None, minval=None, maxval=None, above=None, below=None, config=None): ...
+    def __init__(
+        self,
+        config,
+        name,
+        type_name,
+        default=None,
+        minval=None,
+        maxval=None,
+        above=None,
+        below=None,
+        max_len=None,
+    ) -> None: ...
+    def get(
+        self, gcmd=None, minval=None, maxval=None, above=None, below=None, config=None
+    ): ...
 
 def intParamHelper(config, name, default=None, minval=None, maxval=None): ...
-def floatParamHelper(config, name, default=None, minval=None, maxval=None, above=None, below=None): ...
-def floatListParamHelper(config, name, default=None, above=None, below=None, max_len=None): ...
+def floatParamHelper(
+    config, name, default=None, minval=None, maxval=None, above=None, below=None
+): ...
+def floatListParamHelper(
+    config, name, default=None, above=None, below=None, max_len=None
+): ...
 
 class ContinuousTareFilter:
     sps: Incomplete
@@ -33,7 +58,16 @@ class ContinuousTareFilter:
     buzz_delay: Incomplete
     notches: Incomplete
     notch_quality: Incomplete
-    def __init__(self, sps=None, drift=None, drift_delay=None, buzz=None, buzz_delay=None, notches=None, notch_quality=None) -> None: ...
+    def __init__(
+        self,
+        sps=None,
+        drift=None,
+        drift_delay=None,
+        buzz=None,
+        buzz_delay=None,
+        notches=None,
+        notch_quality=None,
+    ) -> None: ...
     def __eq__(self, other): ...
     def design_filter(self, error_func): ...
 
@@ -52,7 +86,15 @@ class LoadCellProbeConfigHelper:
     def get_grams_per_count(self): ...
 
 class LoadCellProbingMove:
-    def __init__(self, config, load_cell_inst, mcu_trigger_analog, param_helper, continuous_tare_filter_helper, config_helper) -> None: ...
+    def __init__(
+        self,
+        config,
+        load_cell_inst,
+        mcu_trigger_analog,
+        param_helper,
+        continuous_tare_filter_helper,
+        config_helper,
+    ) -> None: ...
     def probing_move(self, gcmd): ...
     def probing_test(self, gcmd, timeout): ...
     def get_status(self, eventtime): ...
@@ -63,7 +105,9 @@ class TappingMove:
     def get_status(self, eventtime): ...
 
 class TapSession:
-    def __init__(self, config, tapping_move, probe_offsets, probe_params_helper) -> None: ...
+    def __init__(
+        self, config, tapping_move, probe_offsets, probe_params_helper
+    ) -> None: ...
     def start_probe_session(self, gcmd): ...
     def end_probe_session(self) -> None: ...
     def run_probe(self, gcmd) -> None: ...

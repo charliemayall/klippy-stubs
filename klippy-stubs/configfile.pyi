@@ -6,7 +6,6 @@ from typing import TYPE_CHECKING, Any, TypeVar, overload
 if TYPE_CHECKING:
     from klippy.klippy import Printer
 
-
 error = configparser.Error
 
 class sentinel: ...
@@ -25,45 +24,161 @@ class ConfigWrapper:
     def get_printer(self) -> Printer: ...
     def get_name(self) -> str: ...
     @overload
-    def get(self, option: str, default: type[sentinel] = ..., note_valid: bool = True) -> str: ...
+    def get(
+        self, option: str, default: type[sentinel] = ..., note_valid: bool = True
+    ) -> str: ...
     @overload
     def get(self, option: str, default: _T, note_valid: bool = True) -> str | _T: ...
     @overload
-    def getint(self, option: str, default: type[sentinel] = ..., minval: int | None = None, maxval: int | None = None, note_valid: bool = True) -> int: ...
+    def getint(
+        self,
+        option: str,
+        default: type[sentinel] = ...,
+        minval: int | None = None,
+        maxval: int | None = None,
+        note_valid: bool = True,
+    ) -> int: ...
     @overload
-    def getint(self, option: str, default: _T, minval: int | None = None, maxval: int | None = None, note_valid: bool = True) -> int | _T: ...
+    def getint(
+        self,
+        option: str,
+        default: _T,
+        minval: int | None = None,
+        maxval: int | None = None,
+        note_valid: bool = True,
+    ) -> int | _T: ...
     @overload
-    def getfloat(self, option: str, default: type[sentinel] = ..., minval: float | None = None, maxval: float | None = None, above: float | None = None, below: float | None = None, note_valid: bool = True) -> float: ...
+    def getfloat(
+        self,
+        option: str,
+        default: type[sentinel] = ...,
+        minval: float | None = None,
+        maxval: float | None = None,
+        above: float | None = None,
+        below: float | None = None,
+        note_valid: bool = True,
+    ) -> float: ...
     @overload
-    def getfloat(self, option: str, default: _T, minval: float | None = None, maxval: float | None = None, above: float | None = None, below: float | None = None, note_valid: bool = True) -> float | _T: ...
+    def getfloat(
+        self,
+        option: str,
+        default: _T,
+        minval: float | None = None,
+        maxval: float | None = None,
+        above: float | None = None,
+        below: float | None = None,
+        note_valid: bool = True,
+    ) -> float | _T: ...
     @overload
-    def getboolean(self, option: str, default: type[sentinel] = ..., note_valid: bool = True) -> bool: ...
+    def getboolean(
+        self, option: str, default: type[sentinel] = ..., note_valid: bool = True
+    ) -> bool: ...
     @overload
-    def getboolean(self, option: str, default: _T, note_valid: bool = True) -> bool | _T: ...
+    def getboolean(
+        self, option: str, default: _T, note_valid: bool = True
+    ) -> bool | _T: ...
     @overload
-    def getchoice(self, option: str, choices: Mapping[_U, _V], default: type[sentinel] = ..., note_valid: bool = True) -> _V: ...
+    def getchoice(
+        self,
+        option: str,
+        choices: Mapping[_U, _V],
+        default: type[sentinel] = ...,
+        note_valid: bool = True,
+    ) -> _V: ...
     @overload
-    def getchoice(self, option: str, choices: Sequence[_U], default: type[sentinel] = ..., note_valid: bool = True) -> _U: ...
+    def getchoice(
+        self,
+        option: str,
+        choices: Sequence[_U],
+        default: type[sentinel] = ...,
+        note_valid: bool = True,
+    ) -> _U: ...
     @overload
-    def getchoice(self, option: str, choices: Mapping[_U, _V], default: _T, note_valid: bool = True) -> _V | _T: ...
+    def getchoice(
+        self,
+        option: str,
+        choices: Mapping[_U, _V],
+        default: _T,
+        note_valid: bool = True,
+    ) -> _V | _T: ...
     @overload
-    def getchoice(self, option: str, choices: Sequence[_U], default: _T, note_valid: bool = True) -> _U | _T: ...
+    def getchoice(
+        self, option: str, choices: Sequence[_U], default: _T, note_valid: bool = True
+    ) -> _U | _T: ...
     @overload
-    def getlists(self, option: str, default: type[sentinel] = ..., seps: tuple[str, ...] = (',',), count: int | None = None, parser: Callable[[str], _U] = ..., note_valid: bool = True) -> tuple[_U, ...]: ...
+    def getlists(
+        self,
+        option: str,
+        default: type[sentinel] = ...,
+        seps: tuple[str, ...] = (",",),
+        count: int | None = None,
+        parser: Callable[[str], _U] = ...,
+        note_valid: bool = True,
+    ) -> tuple[_U, ...]: ...
     @overload
-    def getlists(self, option: str, default: _T, seps: tuple[str, ...] = (',',), count: int | None = None, parser: Callable[[str], _U] = ..., note_valid: bool = True) -> tuple[_U, ...] | _T: ...
+    def getlists(
+        self,
+        option: str,
+        default: _T,
+        seps: tuple[str, ...] = (",",),
+        count: int | None = None,
+        parser: Callable[[str], _U] = ...,
+        note_valid: bool = True,
+    ) -> tuple[_U, ...] | _T: ...
     @overload
-    def getlist(self, option: str, default: type[sentinel] = ..., sep: str = ',', count: int | None = None, note_valid: bool = True) -> tuple[str, ...]: ...
+    def getlist(
+        self,
+        option: str,
+        default: type[sentinel] = ...,
+        sep: str = ",",
+        count: int | None = None,
+        note_valid: bool = True,
+    ) -> tuple[str, ...]: ...
     @overload
-    def getlist(self, option: str, default: _T, sep: str = ',', count: int | None = None, note_valid: bool = True) -> tuple[str, ...] | _T: ...
+    def getlist(
+        self,
+        option: str,
+        default: _T,
+        sep: str = ",",
+        count: int | None = None,
+        note_valid: bool = True,
+    ) -> tuple[str, ...] | _T: ...
     @overload
-    def getintlist(self, option: str, default: type[sentinel] = ..., sep: str = ',', count: int | None = None, note_valid: bool = True) -> tuple[int, ...]: ...
+    def getintlist(
+        self,
+        option: str,
+        default: type[sentinel] = ...,
+        sep: str = ",",
+        count: int | None = None,
+        note_valid: bool = True,
+    ) -> tuple[int, ...]: ...
     @overload
-    def getintlist(self, option: str, default: _T, sep: str = ',', count: int | None = None, note_valid: bool = True) -> tuple[int, ...] | _T: ...
+    def getintlist(
+        self,
+        option: str,
+        default: _T,
+        sep: str = ",",
+        count: int | None = None,
+        note_valid: bool = True,
+    ) -> tuple[int, ...] | _T: ...
     @overload
-    def getfloatlist(self, option: str, default: type[sentinel] = ..., sep: str = ',', count: int | None = None, note_valid: bool = True) -> tuple[float, ...]: ...
+    def getfloatlist(
+        self,
+        option: str,
+        default: type[sentinel] = ...,
+        sep: str = ",",
+        count: int | None = None,
+        note_valid: bool = True,
+    ) -> tuple[float, ...]: ...
     @overload
-    def getfloatlist(self, option: str, default: _T, sep: str = ',', count: int | None = None, note_valid: bool = True) -> tuple[float, ...] | _T: ...
+    def getfloatlist(
+        self,
+        option: str,
+        default: _T,
+        sep: str = ",",
+        count: int | None = None,
+        note_valid: bool = True,
+    ) -> tuple[float, ...] | _T: ...
     def getsection(self, section: str) -> ConfigWrapper: ...
     def has_section(self, section: str) -> bool: ...
     def get_prefix_sections(self, prefix: str) -> list[ConfigWrapper]: ...
@@ -75,7 +190,9 @@ class ConfigFileReader:
     def build_config_string(self, fileconfig) -> str: ...
     def append_fileconfig(self, fileconfig, data: str, filename: str) -> None: ...
     def build_fileconfig(self, data: str, filename: str) -> Incomplete: ...
-    def build_fileconfig_with_includes(self, data: str, filename: str) -> Incomplete: ...
+    def build_fileconfig_with_includes(
+        self, data: str, filename: str
+    ) -> Incomplete: ...
 
 AUTOSAVE_HEADER: str
 
@@ -118,8 +235,16 @@ class PrinterConfig:
     def log_config(self, config: ConfigWrapper) -> None: ...
     def check_unused_options(self, config: ConfigWrapper) -> None: ...
     def runtime_warning(self, msg: str) -> None: ...
-    def deprecate(self, section: str, option: str, value: Any = None, msg: str | None = None) -> None: ...
-    def deprecate_gcode(self, cmd: str, param: str | None = None, value: Any = None, msg: str | None = None) -> None: ...
+    def deprecate(
+        self, section: str, option: str, value: Any = None, msg: str | None = None
+    ) -> None: ...
+    def deprecate_gcode(
+        self,
+        cmd: str,
+        param: str | None = None,
+        value: Any = None,
+        msg: str | None = None,
+    ) -> None: ...
     def deprecate_mcu_code(self, mcu, feature: str, msg: str | None = None) -> None: ...
     def get_status(self, eventtime: float) -> dict[str, Any]: ...
     def set(self, section: str, option: str, value: str) -> None: ...

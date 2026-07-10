@@ -33,7 +33,16 @@ class RotaryDeltaCalibration:
     stepdists: Incomplete
     sks: Incomplete
     abs_endstops: Incomplete
-    def __init__(self, shoulder_radius, shoulder_height, angles, upper_arms, lower_arms, endstops, stepdists) -> None: ...
+    def __init__(
+        self,
+        shoulder_radius,
+        shoulder_height,
+        angles,
+        upper_arms,
+        lower_arms,
+        endstops,
+        stepdists,
+    ) -> None: ...
     def coordinate_descent_params(self, is_extended): ...
     def new_calibration(self, params): ...
     def elbow_coord(self, elbow_id, spos): ...

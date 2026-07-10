@@ -1,7 +1,6 @@
 from _typeshed import Incomplete
 from typing import Any
 
-
 class ExtruderStepper:
     printer: Incomplete
     name: Incomplete

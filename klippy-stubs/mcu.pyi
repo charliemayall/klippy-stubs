@@ -10,7 +10,7 @@ from serialhdl import SerialReader
 from typing import TYPE_CHECKING
 
 if TYPE_CHECKING:
-    from klippy.klippy import Printer
+    from klippy import Printer
 
 class error(Exception): ...
 

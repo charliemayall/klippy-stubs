@@ -23,7 +23,7 @@ class RetryHelper:
     default_retry_tolerance: Incomplete
     value_label: str
     error_msg_extra: Incomplete
-    def __init__(self, config, error_msg_extra: str = '') -> None: ...
+    def __init__(self, config, error_msg_extra: str = "") -> None: ...
     max_retries: Incomplete
     retry_tolerance: Incomplete
     current_retry: int

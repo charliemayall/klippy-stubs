@@ -1,4 +1,9 @@
-from . import ldc1612 as ldc1612, manual_probe as manual_probe, probe as probe, trigger_analog as trigger_analog
+from . import (
+    ldc1612 as ldc1612,
+    manual_probe as manual_probe,
+    probe as probe,
+    trigger_analog as trigger_analog,
+)
 from _typeshed import Incomplete
 
 OUT_OF_RANGE: float
@@ -61,7 +66,15 @@ class TapBestFit:
 MAX_VALID_RAW_VALUE: int
 
 class EddyDescend:
-    def __init__(self, config, sensor_helper, calibration, probe_offsets, param_helper, trigger_analog) -> None: ...
+    def __init__(
+        self,
+        config,
+        sensor_helper,
+        calibration,
+        probe_offsets,
+        param_helper,
+        trigger_analog,
+    ) -> None: ...
     def start_probe_session(self, gcmd): ...
     def run_probe(self, gcmd) -> None: ...
     def pull_probed_results(self): ...

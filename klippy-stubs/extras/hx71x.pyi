@@ -20,7 +20,15 @@ class HX71xBase:
     ffreader: Incomplete
     batch_bulk: Incomplete
     query_hx71x_cmd: Incomplete
-    def __init__(self, config, sensor_type, sample_rate_options, default_sample_rate, gain_options, default_gain) -> None: ...
+    def __init__(
+        self,
+        config,
+        sensor_type,
+        sample_rate_options,
+        default_sample_rate,
+        gain_options,
+        default_gain,
+    ) -> None: ...
     def setup_trigger_analog(self, trigger_analog_oid) -> None: ...
     def get_mcu(self): ...
     def get_samples_per_second(self): ...

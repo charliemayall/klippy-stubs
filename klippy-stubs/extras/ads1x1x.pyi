@@ -59,7 +59,16 @@ class ADS1X1X_pin:
     minval: Incomplete
     maxval: Incomplete
     range_check_count: Incomplete
-    def setup_adc_sample(self, report_time, sample_time: float = 0.0, sample_count: int = 1, batch_num: int = 1, minval: float = 0.0, maxval: float = 1.0, range_check_count: int = 0) -> None: ...
+    def setup_adc_sample(
+        self,
+        report_time,
+        sample_time: float = 0.0,
+        sample_count: int = 1,
+        batch_num: int = 1,
+        minval: float = 0.0,
+        maxval: float = 1.0,
+        range_check_count: int = 0,
+    ) -> None: ...
     def get_last_value(self): ...
 
 def load_config_prefix(config): ...

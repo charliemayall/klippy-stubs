@@ -1,4 +1,11 @@
-from . import aip31068_spi as aip31068_spi, hd44780 as hd44780, hd44780_spi as hd44780_spi, menu as menu, st7920 as st7920, uc1701 as uc1701
+from . import (
+    aip31068_spi as aip31068_spi,
+    hd44780 as hd44780,
+    hd44780_spi as hd44780_spi,
+    menu as menu,
+    st7920 as st7920,
+    uc1701 as uc1701,
+)
 from _typeshed import Incomplete
 
 REDRAW_TIME: float

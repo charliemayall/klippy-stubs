@@ -22,8 +22,8 @@ from klippy.gcode import GCodeCommand
 
 ```bash
 uv sync --dev
-uv run ty check
-uv run python smoke_check.py
+pre-commit install
+uv run ty check smoke_check.py
 ```
 
 To verify the installable package (required for mypy):
