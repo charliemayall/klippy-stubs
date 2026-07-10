@@ -2,10 +2,13 @@ from typing import Any
 
 import configfile
 from gcode import GCodeCommand, Coord
-import klippy
+from typing import TYPE_CHECKING
+
+if TYPE_CHECKING:
+    from klippy.klippy import Printer
 
 class GCodeMove:
-    printer: klippy.Printer
+    printer: Printer
     is_printer_ready: bool
     Coord: type[Coord]
     absolute_coord: bool

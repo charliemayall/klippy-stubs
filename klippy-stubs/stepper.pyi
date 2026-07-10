@@ -3,8 +3,11 @@ from collections.abc import Callable
 from typing import Any, NamedTuple
 
 import configfile
-import klippy
 from mcu import MCU, MCU_endstop
+from typing import TYPE_CHECKING
+
+if TYPE_CHECKING:
+    from klippy.klippy import Printer
 
 class error(Exception): ...
 
@@ -55,7 +58,7 @@ def parse_step_distance(config: configfile.ConfigWrapper, units_in_radians: bool
 
 class GenericPrinterRail:
     stepper_units_in_radians: bool
-    printer: klippy.Printer
+    printer: Printer
     name: str
     steppers: list[MCU_stepper]
     endstops: list[tuple[MCU_endstop, str]]

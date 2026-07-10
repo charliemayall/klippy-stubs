@@ -4,16 +4,19 @@ from typing import Any, Literal, NoReturn
 
 import configfile
 from gcode import GCodeCommand, GCodeDispatch
-import klippy
 from mcu import MCU_endstop
 from pins import PinParams
+from typing import TYPE_CHECKING
+
+if TYPE_CHECKING:
+    from klippy.klippy import Printer
 
 HINT_TIMEOUT: str
 
 def calc_probe_z_average(positions: list[tuple[float, float, float]], method: str = 'average') -> float: ...
 
 class ProbeCommandHelper:
-    printer: klippy.Printer
+    printer: Printer
     probe: PrinterProbe
     query_endstop: Incomplete
     name: str
@@ -38,12 +41,12 @@ class ProbeCommandHelper:
 def lookup_minimum_z(config: configfile.ConfigWrapper) -> float: ...
 
 class LookupZSteppers:
-    printer: klippy.Printer
+    printer: Printer
     add_stepper_cb: Incomplete
     def __init__(self, config: configfile.ConfigWrapper, add_stepper_cb) -> None: ...
 
 class HomingViaProbeHelper:
-    printer: klippy.Printer
+    printer: Printer
     position_endstop: float
     query_endstop_cb: Incomplete
     def __init__(self, config: configfile.ConfigWrapper, position_endstop: float, query_endstop_cb=None) -> None: ...
@@ -57,7 +60,7 @@ class HomingViaProbeHelper:
     def setup_pin(self, pin_type: Literal["endstop"], pin_params: PinParams) -> HomingViaProbeHelper: ...
 
 class DescendToEndstopHelper:
-    printer: klippy.Printer
+    printer: Printer
     mcu_probe: Incomplete
     probe_offsets: Incomplete
     param_helper: Incomplete
@@ -82,7 +85,7 @@ class ProbeParameterHelper:
     def get_probe_params(self, gcmd: GCodeCommand | None = None) -> dict[str, Any]: ...
 
 class SampleAveragingHelper:
-    printer: klippy.Printer
+    printer: Printer
     param_helper: ProbeParameterHelper
     start_session_cb: Incomplete
     hw_probe_session: Incomplete
@@ -101,7 +104,7 @@ class ProbeOffsetsHelper:
     def get_offsets(self, gcmd: GCodeCommand | None = None) -> tuple[float, float, float]: ...
 
 class ProbePointsHelper:
-    printer: klippy.Printer
+    printer: Printer
     finalize_callback: Incomplete
     probe_points: list[tuple[float, float]]
     name: str
@@ -123,7 +126,7 @@ class ProbePointsHelper:
 def run_single_probe(probe: PrinterProbe, gcmd: GCodeCommand) -> tuple[float, float, float]: ...
 
 class ProbeEndstopWrapper:
-    printer: klippy.Printer
+    printer: Printer
     stow_on_each_sample: bool
     activate_gcode: str | None
     deactivate_gcode: str | None
@@ -138,7 +141,7 @@ class ProbeEndstopWrapper:
     def end_probe_session(self) -> None: ...
 
 class PrinterProbe:
-    printer: klippy.Printer
+    printer: Printer
     probe_offsets: ProbeOffsetsHelper
     param_helper: ProbeParameterHelper
     mcu_probe: ProbeEndstopWrapper

@@ -4,9 +4,12 @@ from typing import Any
 
 import configfile
 import gcode
-import klippy
 from mcu import MCU
 from reactor import Reactor, ReactorCompletion, ReactorTimer
+from typing import TYPE_CHECKING
+
+if TYPE_CHECKING:
+    from klippy.klippy import Printer
 
 class Move:
     toolhead: ToolHead
@@ -57,7 +60,7 @@ BUFFER_TIME_START: float
 PRIMING_CMD_TIME: float
 
 class ToolHead:
-    printer: klippy.Printer
+    printer: Printer
     reactor: Reactor
     mcu: MCU
     lookahead: LookAheadQueue
@@ -107,7 +110,7 @@ class ToolHead:
     def set_max_velocities(self, max_velocity: float | None, max_accel: float | None, square_corner_velocity: float | None, min_cruise_ratio: float | None) -> None: ...
 
 class ToolHeadCommandHelper:
-    printer: klippy.Printer
+    printer: Printer
     toolhead: ToolHead
     def __init__(self, config: configfile.ConfigWrapper) -> None: ...
     def cmd_G4(self, gcmd: gcode.GCodeCommand) -> None: ...

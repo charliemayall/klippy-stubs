@@ -2,8 +2,11 @@ from _typeshed import Incomplete
 from collections.abc import Callable
 from typing import Any, TypeVar, overload
 
-import klippy
 from reactor import ReactorMutex
+from typing import TYPE_CHECKING
+
+if TYPE_CHECKING:
+    from klippy.klippy import Printer
 
 class CommandError(Exception): ...
 
@@ -103,7 +106,7 @@ class GCodeCommand:
 class GCodeDispatch:
     error = CommandError
     Coord = Coord
-    printer: klippy.Printer
+    printer: Printer
     is_fileinput: bool
     is_printer_ready: bool
     mutex: ReactorMutex
@@ -158,7 +161,7 @@ class GCodeDispatch:
     def cmd_HELP(self, gcmd: GCodeCommand) -> None: ...
 
 class GCodeIO:
-    printer: klippy.Printer
+    printer: Printer
     gcode: GCodeDispatch
     gcode_mutex: ReactorMutex
     fd: int

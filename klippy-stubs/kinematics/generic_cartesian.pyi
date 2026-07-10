@@ -4,9 +4,12 @@ from typing import Any
 
 import configfile
 from gcode import GCodeCommand
-import klippy
 from stepper import MCU_stepper
 from toolhead import ToolHead
+from typing import TYPE_CHECKING
+
+if TYPE_CHECKING:
+    from klippy.klippy import Printer
 
 VALID_AXES: Incomplete
 
@@ -58,7 +61,7 @@ class DualCarriage:
     def add_stepper(self, kin_stepper) -> None: ...
 
 class GenericCartesianKinematics:
-    printer: klippy.Printer
+    printer: Printer
     dc_module: idex_modes.DualCarriages | None
     max_z_velocity: float
     max_z_accel: float

@@ -3,7 +3,10 @@ from typing import Any
 
 import configfile
 from gcode import GCodeCommand
-import klippy
+from typing import TYPE_CHECKING
+
+if TYPE_CHECKING:
+    from klippy.klippy import Printer
 
 KELVIN_TO_CELSIUS: float
 MAX_HEAT_TIME: float
@@ -14,7 +17,7 @@ QUELL_STALE_TIME: float
 MIN_PWM_CHANGE_RATIO: float
 
 class Heater:
-    printer: klippy.Printer
+    printer: Printer
     name: str
     short_name: str
     sensor: Incomplete
@@ -82,7 +85,7 @@ class ControlPID:
     def check_busy(self, eventtime: float, smoothed_temp: float, target_temp: float) -> bool: ...
 
 class PrinterHeaters:
-    printer: klippy.Printer
+    printer: Printer
     sensor_factories: dict[str, Any]
     heaters: dict[str, Heater]
     gcode_id_to_sensor: dict[str, str]

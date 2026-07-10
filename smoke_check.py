@@ -11,6 +11,8 @@ from klippy.webhooks import WebRequest
 
 
 def check_config(config: ConfigWrapper) -> None:
+    printer: Printer = config.get_printer()
+    assert printer is not None
     s: str = config.get("foo")
     i: int = config.getint("bar")
     f: float = config.getfloat("baz")

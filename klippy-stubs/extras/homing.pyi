@@ -2,17 +2,20 @@ from typing import Any
 
 import configfile
 from gcode import GCodeCommand
-import klippy
 from mcu import MCU_endstop
 from reactor import ReactorCompletion
 from stepper import MCU_stepper
 from toolhead import ToolHead
+from typing import TYPE_CHECKING
+
+if TYPE_CHECKING:
+    from klippy.klippy import Printer
 
 HOMING_START_DELAY: float
 ENDSTOP_SAMPLE_TIME: float
 ENDSTOP_SAMPLE_COUNT: int
 
-def multi_complete(printer: klippy.Printer, completions: list[ReactorCompletion]) -> ReactorCompletion: ...
+def multi_complete(printer: Printer, completions: list[ReactorCompletion]) -> ReactorCompletion: ...
 
 class StepperPosition:
     stepper: MCU_stepper
@@ -27,23 +30,23 @@ class StepperPosition:
     def verify_no_probe_skew(self, haltpos: list[float]) -> None: ...
 
 class HomingMove:
-    printer: klippy.Printer
+    printer: Printer
     endstops: list[tuple[MCU_endstop, str]]
     toolhead: ToolHead
     stepper_positions: list[StepperPosition]
-    def __init__(self, printer: klippy.Printer, endstops: list[tuple[MCU_endstop, str]], toolhead: ToolHead | None = None) -> None: ...
+    def __init__(self, printer: Printer, endstops: list[tuple[MCU_endstop, str]], toolhead: ToolHead | None = None) -> None: ...
     def get_mcu_endstops(self) -> list[MCU_endstop]: ...
     def calc_toolhead_pos(self, kin_spos: dict[str, float], offsets: dict[str, int]) -> list[float]: ...
     def homing_move(self, movepos: list[float], speed: float, probe_pos: bool = False, triggered: bool = True, check_triggered: bool = True) -> list[float]: ...
     def check_no_movement(self) -> str | None: ...
 
 class Homing:
-    printer: klippy.Printer
+    printer: Printer
     toolhead: ToolHead
     changed_axes: list[int]
     trigger_mcu_pos: dict[str, int]
     adjust_pos: dict[str, float]
-    def __init__(self, printer: klippy.Printer) -> None: ...
+    def __init__(self, printer: Printer) -> None: ...
     def set_axes(self, axes: list[int]) -> None: ...
     def get_axes(self) -> list[int]: ...
     def get_trigger_position(self, stepper_name: str) -> int: ...
@@ -52,7 +55,7 @@ class Homing:
     def home_rails(self, rails, forcepos: list[float], movepos: list[float]) -> None: ...
 
 class PrinterHoming:
-    printer: klippy.Printer
+    printer: Printer
     def __init__(self, config: configfile.ConfigWrapper) -> None: ...
     def manual_home(self, toolhead: ToolHead, endstops: list[tuple[MCU_endstop, str]], pos: list[float], speed: float, probe_pos: bool, triggered: bool, check_triggered: bool) -> list[float]: ...
     def check_probe_first_home(self, gcmd: GCodeCommand) -> bool: ...

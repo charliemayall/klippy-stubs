@@ -1,9 +1,11 @@
 import configparser
 from _typeshed import Incomplete
 from collections.abc import Callable, Mapping, Sequence
-from typing import Any, TypeVar, overload
+from typing import TYPE_CHECKING, Any, TypeVar, overload
 
-import klippy
+if TYPE_CHECKING:
+    from klippy.klippy import Printer
+
 
 error = configparser.Error
 
@@ -15,12 +17,12 @@ _V = TypeVar("_V")
 
 class ConfigWrapper:
     error = configparser.Error
-    printer: klippy.Printer
+    printer: Printer
     fileconfig: Incomplete
     access_tracking: Incomplete
     section: str
     def __init__(self, printer, fileconfig, access_tracking, section) -> None: ...
-    def get_printer(self) -> klippy.Printer: ...
+    def get_printer(self) -> Printer: ...
     def get_name(self) -> str: ...
     @overload
     def get(self, option: str, default: type[sentinel] = ..., note_valid: bool = True) -> str: ...
@@ -78,7 +80,7 @@ class ConfigFileReader:
 AUTOSAVE_HEADER: str
 
 class ConfigAutoSave:
-    printer: klippy.Printer
+    printer: Printer
     fileconfig: Incomplete
     status_save_pending: Incomplete
     save_config_pending: bool
@@ -93,7 +95,7 @@ class ConfigAutoSave:
     def cmd_SAVE_CONFIG(self, gcmd) -> None: ...
 
 class ConfigValidate:
-    printer: klippy.Printer
+    printer: Printer
     status_settings: Incomplete
     access_tracking: Incomplete
     autosave_options: Incomplete
@@ -103,14 +105,14 @@ class ConfigValidate:
     def get_status(self, eventtime: float) -> dict[str, Any]: ...
 
 class PrinterConfig:
-    printer: klippy.Printer
+    printer: Printer
     autosave: ConfigAutoSave
     validate: ConfigValidate
     deprecated: Incomplete
     status_raw_config: Incomplete
     status_warnings: Incomplete
     def __init__(self, printer) -> None: ...
-    def get_printer(self) -> klippy.Printer: ...
+    def get_printer(self) -> Printer: ...
     def read_config(self, filename: str) -> ConfigWrapper: ...
     def read_main_config(self) -> ConfigWrapper: ...
     def log_config(self, config: ConfigWrapper) -> None: ...

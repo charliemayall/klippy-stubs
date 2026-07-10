@@ -5,8 +5,11 @@ from typing import Any
 
 import configfile
 from gcode import GCodeCommand, GCodeDispatch
-import klippy
 from toolhead import ToolHead
+from typing import TYPE_CHECKING
+
+if TYPE_CHECKING:
+    from klippy.klippy import Printer
 
 PROFILE_VERSION: int
 PROFILE_OPTIONS: Incomplete
@@ -23,7 +26,7 @@ def parse_gcmd_coord(gcmd, name): ...
 
 class BedMesh:
     FADE_DISABLE: int
-    printer: klippy.Printer
+    printer: Printer
     last_position: list[float]
     bmc: Incomplete
     z_mesh: ZMesh | None

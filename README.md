@@ -12,6 +12,12 @@ pip install klippy-stubs
 
 Type checkers pick up the stubs automatically after install.
 
+```python
+from klippy.configfile import ConfigWrapper
+from klippy.klippy import Printer
+from klippy.gcode import GCodeCommand
+```
+
 ## Development
 
 ```bash
@@ -26,12 +32,4 @@ To verify the installable package (required for mypy):
 uv build
 uv pip install dist/klippy_stubs-*.whl --force-reinstall
 uv run mypy smoke_check.py
-```
-
-## Layout
-
-```
-klippy-stubs/     # PEP 561 stub package (ships as site-packages/klippy-stubs/)
-typings/          # dev-only stubs for klippy dependencies (cffi, greenlet)
-smoke_check.py    # overload regression check (not shipped)
 ```

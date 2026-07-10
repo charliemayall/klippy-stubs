@@ -3,8 +3,11 @@ from collections.abc import Callable
 from typing import Any, TypeVar, overload
 
 import gcode
-import klippy
 from reactor import Reactor
+from typing import TYPE_CHECKING
+
+if TYPE_CHECKING:
+    from klippy.klippy import Printer
 
 json_loads_byteify: Callable[[dict[str, Any]], dict[str, Any]]
 
@@ -57,18 +60,18 @@ class WebRequest:
     def finish(self) -> None: ...
 
 class ServerSocket:
-    printer: klippy.Printer
+    printer: Printer
     webhooks: WebHooks
     reactor: Reactor
     sock: Incomplete
     clients: dict[int, ClientConnection]
     fd_handle: Incomplete
-    def __init__(self, webhooks: WebHooks, printer: klippy.Printer) -> None: ...
+    def __init__(self, webhooks: WebHooks, printer: Printer) -> None: ...
     def pop_client(self, client_id: int) -> None: ...
     def stats(self, eventtime: float) -> tuple[bool, str]: ...
 
 class ClientConnection:
-    printer: klippy.Printer
+    printer: Printer
     webhooks: WebHooks
     reactor: Reactor
     server: ServerSocket
@@ -88,9 +91,9 @@ class ClientConnection:
     def send(self, data: bytes) -> None: ...
 
 class WebHooks:
-    printer: klippy.Printer
+    printer: Printer
     sconn: ServerSocket
-    def __init__(self, printer: klippy.Printer) -> None: ...
+    def __init__(self, printer: Printer) -> None: ...
     def register_endpoint(self, path: str, callback: Callable[[WebRequest], None]) -> None: ...
     def register_mux_endpoint(self, path: str, key: str, value: str, callback: Callable[[WebRequest], None]) -> None: ...
     def get_connection(self) -> ServerSocket: ...
@@ -100,20 +103,20 @@ class WebHooks:
     def call_remote_method(self, method: str, **kwargs: Any) -> None: ...
 
 class GCodeHelper:
-    printer: klippy.Printer
+    printer: Printer
     gcode: gcode.GCodeDispatch
     is_output_registered: bool
     clients: list[ClientConnection]
-    def __init__(self, printer: klippy.Printer) -> None: ...
+    def __init__(self, printer: Printer) -> None: ...
 
 SUBSCRIPTION_REFRESH_TIME: float
 
 class QueryStatusHelper:
-    printer: klippy.Printer
+    printer: Printer
     clients: list[ClientConnection]
     pending_queries: Incomplete
     query_timer: Incomplete
     last_query: Incomplete
-    def __init__(self, printer: klippy.Printer) -> None: ...
+    def __init__(self, printer: Printer) -> None: ...
 
-def add_early_printer_objects(printer: klippy.Printer) -> None: ...
+def add_early_printer_objects(printer: Printer) -> None: ...

@@ -1,0 +1,17 @@
+[project]
+name = "klippy-stubs-demo"
+version = "0.1.1"
+description = "Demo Klipper extra using klippy-stubs from PyPI"
+readme = "README.md"
+requires-python = ">=3.10"
+dependencies = ["klippy-stubs>=0.1.1"]
+
+[dependency-groups]
+dev = ["mypy>=2.2.0", "ty>=0.0.57"]
+
+[tool.mypy]
+python_version = "3.13"
+warn_unused_ignores = true
+
+[tool.ty.environment]
+python-version = "3.13"
