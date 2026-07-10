@@ -1,0 +1,50 @@
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[project]
+name = "klippy-stubs"
+version = "0.1.0"
+description = "PEP 561 type stubs for Klipper's klippy package"
+readme = "README.md"
+requires-python = ">=3.10"
+license = "GPL-3.0-or-later"
+classifiers = [
+    "Typing :: Stubs Only",
+    "Programming Language :: Python :: 3",
+]
+
+[project.urls]
+Homepage = "https://github.com/charliemayall/klippy-stubs"
+Repository = "https://github.com/charliemayall/klippy-stubs"
+
+[[tool.uv.index]]
+name = "testpypi"
+url = "https://test.pypi.org/simple/"
+publish-url = "https://test.pypi.org/legacy/"
+explicit = true
+
+[dependency-groups]
+dev = [
+    "ruff>=0.15.21",
+    "ty>=0.0.57",
+    "mypy>=2.2.0",
+    "hatchling>=1.27.0",
+]
+
+[tool.uv]
+package = false
+
+[tool.hatch.build.targets.wheel]
+packages = ["klippy-stubs"]
+
+[tool.mypy]
+mypy_path = "typings"
+
+[tool.ty.environment]
+extra-paths = ["klippy-stubs", "typings"]
+python-version = "3.13"
+
+[tool.ty.src]
+include = ["klippy-stubs/**", "smoke_check.py"]
+exclude = ["klipper/**"]

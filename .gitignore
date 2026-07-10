@@ -1,0 +1,7 @@
+klipper
+.venv
+dist
+.*_cache
+__pycache__
+.env
+notes.md

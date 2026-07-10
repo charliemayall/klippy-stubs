@@ -1,0 +1,23 @@
+from _typeshed import Incomplete
+
+HOST_REPORT_TIME: float
+RPI_PROC_TEMP_FILE: str
+
+class Temperature_HOST:
+    printer: Incomplete
+    reactor: Incomplete
+    name: Incomplete
+    path: Incomplete
+    temp: float
+    sample_timer: Incomplete
+    file_handle: Incomplete
+    def __init__(self, config) -> None: ...
+    def handle_connect(self) -> None: ...
+    min_temp: Incomplete
+    max_temp: Incomplete
+    def setup_minmax(self, min_temp, max_temp) -> None: ...
+    def setup_callback(self, cb) -> None: ...
+    def get_report_time_delta(self): ...
+    def get_status(self, eventtime): ...
+
+def load_config(config) -> None: ...

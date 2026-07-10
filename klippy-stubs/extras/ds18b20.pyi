@@ -1,0 +1,23 @@
+from _typeshed import Incomplete
+
+DS18_REPORT_TIME: float
+DS18_MIN_REPORT_TIME: float
+DS18_MAX_CONSECUTIVE_ERRORS: int
+
+class DS18B20:
+    printer: Incomplete
+    name: Incomplete
+    sensor_id: Incomplete
+    temp: float
+    report_time: Incomplete
+    oid: Incomplete
+    def __init__(self, config) -> None: ...
+    min_temp: Incomplete
+    max_temp: Incomplete
+    def setup_minmax(self, min_temp, max_temp) -> None: ...
+    def fault(self, msg) -> None: ...
+    def get_report_time_delta(self): ...
+    def setup_callback(self, cb) -> None: ...
+    def get_status(self, eventtime): ...
+
+def load_config(config) -> None: ...

@@ -1,0 +1,29 @@
+from _typeshed import Incomplete
+
+SAMPLE_TIME: float
+SAMPLE_COUNT: int
+REPORT_TIME: float
+
+class MCU_scaled_adc:
+    setup_adc_sample: Incomplete
+    get_mcu: Incomplete
+    def __init__(self, main, pin_params) -> None: ...
+    def setup_adc_callback(self, callback) -> None: ...
+    def get_last_value(self): ...
+
+class PrinterADCScaled:
+    printer: Incomplete
+    name: Incomplete
+    last_vref: Incomplete
+    last_vssa: Incomplete
+    mcu_vref: Incomplete
+    mcu_vssa: Incomplete
+    inv_smooth_time: Incomplete
+    mcu: Incomplete
+    def __init__(self, config) -> None: ...
+    def setup_pin(self, pin_type, pin_params): ...
+    def calc_smooth(self, read_time, read_value, last): ...
+    def vref_callback(self, samples) -> None: ...
+    def vssa_callback(self, samples) -> None: ...
+
+def load_config_prefix(config): ...

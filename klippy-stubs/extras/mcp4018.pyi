@@ -1,0 +1,16 @@
+from . import bus as bus
+from _typeshed import Incomplete
+
+class mcp4018:
+    printer: Incomplete
+    i2c: Incomplete
+    scale: Incomplete
+    start_value: Incomplete
+    name: Incomplete
+    def __init__(self, config) -> None: ...
+    def handle_connect(self) -> None: ...
+    def set_dac(self, value) -> None: ...
+    cmd_SET_DIGIPOT_help: str
+    def cmd_SET_DIGIPOT(self, gcmd) -> None: ...
+
+def load_config_prefix(config): ...
