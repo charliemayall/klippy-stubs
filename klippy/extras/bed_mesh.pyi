@@ -3,9 +3,9 @@ from _typeshed import Incomplete
 from collections.abc import Generator
 from typing import Any
 
-import configfile
-from gcode import GCodeCommand, GCodeDispatch
-from toolhead import ToolHead
+from klippy import configfile
+from klippy.gcode import GCodeCommand, GCodeDispatch
+from klippy.toolhead import ToolHead
 from typing import TYPE_CHECKING
 
 if TYPE_CHECKING:

@@ -2,10 +2,10 @@ from . import idex_modes as idex_modes
 from _typeshed import Incomplete
 from typing import Any
 
-import configfile
-from gcode import GCodeCommand
-from stepper import MCU_stepper
-from toolhead import ToolHead
+from klippy import configfile
+from klippy.gcode import GCodeCommand
+from klippy.stepper import MCU_stepper
+from klippy.toolhead import ToolHead
 from typing import TYPE_CHECKING
 
 if TYPE_CHECKING:

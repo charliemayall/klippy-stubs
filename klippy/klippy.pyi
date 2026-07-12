@@ -2,10 +2,9 @@ from _typeshed import Incomplete
 from collections.abc import Callable
 from typing import Any, TypeVar, overload
 
-import configfile
-import gcode
-from configfile import sentinel as config_sentinel
-from reactor import Reactor
+from klippy import configfile, gcode
+from klippy.configfile import sentinel as config_sentinel
+from klippy.reactor import Reactor
 
 message_ready: str
 message_startup: str

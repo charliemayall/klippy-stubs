@@ -2,7 +2,7 @@ from _typeshed import Incomplete
 from typing import TYPE_CHECKING, Any, Literal, NotRequired, TypedDict, overload
 
 if TYPE_CHECKING:
-    from mcu import MCU_adc, MCU_digital_out, MCU_endstop, MCU_pwm
+    from klippy.mcu import MCU_adc, MCU_digital_out, MCU_endstop, MCU_pwm
 
 class error(Exception): ...
 

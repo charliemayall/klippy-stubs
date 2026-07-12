@@ -1,7 +1,7 @@
 from _typeshed import Incomplete
 
-from reactor import Reactor, ReactorTimer
-from serialhdl import SerialReader
+from klippy.reactor import Reactor, ReactorTimer
+from klippy.serialhdl import SerialReader
 
 RTT_AGE: float
 DECAY: float

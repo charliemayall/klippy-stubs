@@ -147,5 +147,4 @@ class EPollReactor(SelectReactor):
         is_writeable: bool = False,
     ) -> None: ...
 
-# pony: runtime falls back to SelectReactor when select.poll is unavailable
 Reactor = PollReactor

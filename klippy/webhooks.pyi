@@ -2,8 +2,8 @@ from _typeshed import Incomplete
 from collections.abc import Callable
 from typing import Any, TypeVar, overload
 
-import gcode
-from reactor import Reactor
+from klippy import gcode
+from klippy.reactor import Reactor
 from typing import TYPE_CHECKING
 
 if TYPE_CHECKING:

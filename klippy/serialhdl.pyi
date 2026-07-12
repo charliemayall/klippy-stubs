@@ -2,8 +2,8 @@ from _typeshed import Incomplete
 from collections.abc import Callable
 from typing import Any
 
-from msgproto import MessageParser
-from reactor import Reactor
+from klippy.msgproto import MessageParser
+from klippy.reactor import Reactor
 
 class error(Exception): ...
 

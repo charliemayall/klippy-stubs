@@ -2,6 +2,8 @@
 
 from __future__ import annotations
 
+from typing import cast
+
 from klippy.configfile import ConfigWrapper
 from klippy.gcode import GCodeCommand
 from klippy.klippy import Printer
@@ -47,7 +49,16 @@ def check_setup_pin(pp: PrinterPins, m: MCU) -> None:
     endstop = pp.setup_pin("endstop", "^pe0")
     pwm = m.setup_pin(
         "pwm",
-        PinParams(chip=m, chip_name="mcu", pin="PE9", invert=0, pullup=0),
+        cast(
+            PinParams,
+            {
+                "chip": m,
+                "chip_name": "mcu",
+                "pin": "PE9",
+                "invert": 0,
+                "pullup": 0,
+            },
+        ),
     )
     assert isinstance(endstop, MCU_endstop)
     assert isinstance(pwm, MCU_pwm)

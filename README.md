@@ -10,7 +10,10 @@ uv add klippy-stubs
 pip install klippy-stubs
 ```
 
-Type checkers pick up the stubs automatically after install.
+Stubs install under `klippy/` (PEP 561).
+
+Pyright, basedpyright, ty, and mypy
+resolve `from klippy.*` imports with no extra configuration.
 
 ```python
 from klippy.configfile import ConfigWrapper
@@ -26,10 +29,12 @@ pre-commit install
 uv run ty check smoke_check.py
 ```
 
-To verify the installable package (required for mypy):
+Verify the wheel
 
 ```bash
 uv build
 uv pip install dist/klippy_stubs-*.whl --force-reinstall
+uv run ty check smoke_check.py
 uv run mypy smoke_check.py
+npx pyright smoke_check.py
 ```

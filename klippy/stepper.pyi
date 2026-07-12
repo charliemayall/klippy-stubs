@@ -2,8 +2,8 @@ from _typeshed import Incomplete
 from collections.abc import Callable
 from typing import Any, NamedTuple
 
-import configfile
-from mcu import MCU, MCU_endstop
+from klippy import configfile
+from klippy.mcu import MCU, MCU_endstop
 from typing import TYPE_CHECKING
 
 if TYPE_CHECKING:

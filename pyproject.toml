@@ -4,7 +4,7 @@ build-backend = "hatchling.build"
 
 [project]
 name = "klippy-stubs"
-version = "0.1.1"
+version = "0.2.0"
 description = "PEP 561 type stubs for Klipper's klippy package"
 readme = "README.md"
 requires-python = ">=3.10"
@@ -37,15 +37,23 @@ dev = [
 package = false
 
 [tool.hatch.build.targets.wheel]
-packages = ["klippy-stubs"]
+packages = ["klippy"]
 
 [tool.mypy]
 mypy_path = "typings"
 
 [tool.ty.environment]
-extra-paths = ["klippy-stubs", "typings"]
+extra-paths = ["typings"]
 python-version = "3.13"
 
 [tool.ty.src]
-include = ["klippy-stubs/**", "smoke_check.py"]
+include = ["klippy/**", "smoke_check.py"]
 exclude = ["klipper/**"]
+
+[tool.pyright]
+pythonVersion = "3.10"
+reportMissingModuleSource = false
+
+[tool.basedpyright]
+pythonVersion = "3.10"
+reportMissingModuleSource = false

@@ -2,10 +2,9 @@ from _typeshed import Incomplete
 from collections.abc import Callable
 from typing import Any
 
-import configfile
-import gcode
-from mcu import MCU
-from reactor import Reactor, ReactorCompletion, ReactorTimer
+from klippy import configfile, gcode
+from klippy.mcu import MCU
+from klippy.reactor import Reactor, ReactorCompletion, ReactorTimer
 from typing import TYPE_CHECKING
 
 if TYPE_CHECKING:

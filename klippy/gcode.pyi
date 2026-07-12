@@ -2,7 +2,7 @@ from _typeshed import Incomplete
 from collections.abc import Callable
 from typing import Any, TypeVar, overload
 
-from reactor import ReactorMutex
+from klippy.reactor import ReactorMutex
 from typing import TYPE_CHECKING
 
 if TYPE_CHECKING:

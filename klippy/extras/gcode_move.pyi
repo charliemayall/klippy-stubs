@@ -1,7 +1,7 @@
 from typing import Any
 
-import configfile
-from gcode import GCodeCommand, Coord
+from klippy import configfile
+from klippy.gcode import GCodeCommand, Coord
 from typing import TYPE_CHECKING
 
 if TYPE_CHECKING:

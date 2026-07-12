@@ -2,9 +2,9 @@ from . import idex_modes as idex_modes
 from _typeshed import Incomplete
 from typing import Any
 
-import configfile
-from stepper import GenericPrinterRail, MCU_stepper
-from toolhead import ToolHead
+from klippy import configfile
+from klippy.stepper import GenericPrinterRail, MCU_stepper
+from klippy.toolhead import ToolHead
 
 class CartKinematics:
     printer: Incomplete

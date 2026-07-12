@@ -2,10 +2,10 @@ from . import manual_probe as manual_probe
 from _typeshed import Incomplete
 from typing import Any, Literal, NoReturn
 
-import configfile
-from gcode import GCodeCommand, GCodeDispatch
-from mcu import MCU_endstop
-from pins import PinParams
+from klippy import configfile
+from klippy.gcode import GCodeCommand, GCodeDispatch
+from klippy.mcu import MCU_endstop
+from klippy.pins import PinParams
 from typing import TYPE_CHECKING
 
 if TYPE_CHECKING:

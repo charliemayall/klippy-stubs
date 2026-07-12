@@ -1,11 +1,11 @@
 from typing import Any
 
-import configfile
-from gcode import GCodeCommand
-from mcu import MCU_endstop
-from reactor import ReactorCompletion
-from stepper import MCU_stepper
-from toolhead import ToolHead
+from klippy import configfile
+from klippy.gcode import GCodeCommand
+from klippy.mcu import MCU_endstop
+from klippy.reactor import ReactorCompletion
+from klippy.stepper import MCU_stepper
+from klippy.toolhead import ToolHead
 from typing import TYPE_CHECKING
 
 if TYPE_CHECKING:

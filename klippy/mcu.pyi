@@ -2,15 +2,15 @@ from _typeshed import Incomplete
 from collections.abc import Callable
 from typing import Any, Literal, overload
 
-import configfile
-from clocksync import ClockSync
-from pins import PinParams
-from reactor import ReactorCompletion
-from serialhdl import SerialReader
+from klippy import configfile
+from klippy.clocksync import ClockSync
+from klippy.pins import PinParams
+from klippy.reactor import ReactorCompletion
+from klippy.serialhdl import SerialReader
 from typing import TYPE_CHECKING
 
 if TYPE_CHECKING:
-    from klippy import Printer
+    from klippy.klippy import Printer
 
 class error(Exception): ...
 
