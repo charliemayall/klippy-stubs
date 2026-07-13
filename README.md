@@ -1,3 +1,5 @@
+[![PyPI version](https://badge.fury.io/py/global-chem.svg)](https://badge.fury.io/py/global-chem)
+
 # klippy-stubs
 
 PEP 561 type stubs for [Klipper](https://www.klipper3d.org/)'s `klippy` package.
