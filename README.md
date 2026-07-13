@@ -1,4 +1,4 @@
-[![PyPI version](https://badge.fury.io/py/global-chem.svg)](https://badge.fury.io/py/global-chem)
+[![PyPI version](https://badge.fury.io/py/klippy-stubs.svg?icon=si%3Apython)](https://badge.fury.io/py/klippy-stubs)
 
 # klippy-stubs
 
