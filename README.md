@@ -65,3 +65,5 @@ The `demo/` package is a minimal Klipper extra that exercises common stub paths.
 ### Pull Requests
 
 PRs that simply re-run `mypy stubgen` and touch any `# hand-refined:` sections will be rejected. If a refinement looks wrong, open a PR with an example from the Klipper source code that demonstrates that shows the incorrect typing.
+
+PRs that add new `# hand-refined:` sections are strongly encouraged. I don't have time, nor the understanding, to go through and hand-refine every API. Make a decent case for the refinement, as more hand-refined sections means more to maintain, so they need to add value.
