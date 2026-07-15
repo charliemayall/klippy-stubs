@@ -4,7 +4,7 @@ version = "0.1.1"
 description = "Demo Klipper extra using klippy-stubs from PyPI"
 readme = "README.md"
 requires-python = ">=3.10"
-dependencies = ["klippy-stubs>=0.2.0"]
+dependencies = ["klippy-stubs>=0.3.0"]
 
 [dependency-groups]
 dev = ["mypy>=2.2.0", "ty>=0.0.57"]

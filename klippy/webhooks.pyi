@@ -34,6 +34,7 @@ class WebRequest:
     is_error: bool
     def __init__(self, client_conn: ClientConnection, request: bytes | str) -> None: ...
     def get_client_connection(self) -> ClientConnection: ...
+    # hand-refined: typed request field getters
     @overload
     def get(
         self,

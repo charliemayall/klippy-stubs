@@ -1,10 +1,16 @@
 from _typeshed import Incomplete
 from collections.abc import Callable
-from typing import Any, TypeVar, overload
+from typing import TYPE_CHECKING, Any, Literal, TypeVar, overload
 
 from klippy import configfile, gcode
 from klippy.configfile import sentinel as config_sentinel
 from klippy.reactor import Reactor
+
+if TYPE_CHECKING:
+    from klippy.configfile import PrinterConfig
+    from klippy.extras.gcode_move import GCodeMove
+    from klippy.gcode import GCodeDispatch
+    from klippy.toolhead import ToolHead
 
 message_ready: str
 message_startup: str
@@ -32,11 +38,21 @@ class Printer:
     def is_shutdown(self) -> bool: ...
     def update_error_msg(self, oldmsg: str, newmsg: str) -> None: ...
     def add_object(self, name: str, obj: Any) -> None: ...
+    # hand-refined: named printer objects (stubgen can't infer object registry)
+    @overload
+    def lookup_object(self, name: Literal["gcode"]) -> GCodeDispatch: ...
+    @overload
+    def lookup_object(self, name: Literal["configfile"]) -> PrinterConfig: ...
+    @overload
+    def lookup_object(self, name: Literal["toolhead"]) -> ToolHead: ...
+    @overload
+    def lookup_object(self, name: Literal["gcode_move"]) -> GCodeMove: ...
     @overload
     def lookup_object(self, name: str, default: type[config_sentinel] = ...) -> Any: ...
     @overload
     def lookup_object(self, name: str, default: _T) -> Any | _T: ...
     def lookup_objects(self, module: str | None = None) -> list[tuple[str, Any]]: ...
+    # hand-refined: optional load_object default
     @overload
     def load_object(
         self,

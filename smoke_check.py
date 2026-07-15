@@ -4,11 +4,13 @@ from __future__ import annotations
 
 from typing import cast
 
-from klippy.configfile import ConfigWrapper
-from klippy.gcode import GCodeCommand
+from klippy.configfile import ConfigWrapper, PrinterConfig
+from klippy.extras.gcode_move import GCodeMove
+from klippy.gcode import GCodeCommand, GCodeDispatch
 from klippy.klippy import Printer
 from klippy.mcu import MCU, MCU_endstop, MCU_pwm
 from klippy.pins import PinParams, PrinterPins
+from klippy.toolhead import ToolHead
 from klippy.webhooks import WebRequest
 
 
@@ -37,12 +39,26 @@ def check_gcode(gcmd: GCodeCommand) -> None:
 
 
 def check_printer(printer: Printer) -> None:
-    obj: object = printer.lookup_object("toolhead")
+    toolhead: ToolHead = printer.lookup_object("toolhead")
+    gcode: GCodeDispatch = printer.lookup_object("gcode")
+    configfile: PrinterConfig = printer.lookup_object("configfile")
+    gcode_move: GCodeMove = printer.lookup_object("gcode_move")
     missing: object | None = printer.lookup_object("nope", None)
     reactor = printer.get_reactor()
-    assert isinstance(obj, object)
+    assert toolhead is not None
+    assert gcode is not None
+    assert configfile is not None
+    assert gcode_move is not None
     assert missing is None or isinstance(missing, object)
     assert reactor is not None
+
+
+def check_toolhead(toolhead: ToolHead) -> None:
+    toolhead.manual_move([1.0, None, 0.0], 100.0)
+    limits: tuple[float, float, float, float] = toolhead.set_max_velocities(
+        100.0, 1000.0, 5.0, 0.5
+    )
+    assert len(limits) == 4
 
 
 def check_setup_pin(pp: PrinterPins, m: MCU) -> None:

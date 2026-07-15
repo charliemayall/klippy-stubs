@@ -44,6 +44,7 @@ class GCodeCommand:
 
     class sentinel: ...
 
+    # hand-refined: G-code param parsers and sentinel defaults
     @overload
     def get(
         self,

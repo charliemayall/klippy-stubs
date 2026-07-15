@@ -150,6 +150,7 @@ class MessageParser:
     def get_constants(self) -> dict[str, Any]: ...
     class sentinel: ...
 
+    # hand-refined: mcu constant getters with sentinel default
     @overload
     def get_constant(
         self,

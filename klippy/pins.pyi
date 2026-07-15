@@ -45,6 +45,7 @@ class PrinterPins:
         can_pullup: bool = False,
         share_type: Any = None,
     ) -> PinParams: ...
+    # hand-refined: setup_pin discriminated by pin type
     @overload
     def setup_pin(self, pin_type: Literal["endstop"], pin_desc: str) -> MCU_endstop: ...
     @overload

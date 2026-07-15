@@ -16,6 +16,7 @@ uv run mypy demo_extra.py
 - `ConfigWrapper` getters (`getfloat` with `above=`)
 - `GCodeCommand` param parsing (`get_int` with bounds)
 - `config.get_printer()` → `Printer` via `from klippy.klippy import Printer`
-- `Printer.lookup_object("toolhead")` → `ToolHead`
+- `Printer.lookup_object("toolhead")` → `ToolHead` (literal overload)
+- `ToolHead.manual_move` with partial coords (`None` keeps axis)
 
 See `sample.cfg` for the printer.cfg snippet.
