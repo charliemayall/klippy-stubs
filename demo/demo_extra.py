@@ -1,4 +1,4 @@
-"""Sample Klipper extra — type-checked with klippy-stubs, not runnable without Klipper."""
+"""Sample Klipper extra - type-checked with klippy-stubs, not runnable without Klipper."""
 
 from __future__ import annotations
 

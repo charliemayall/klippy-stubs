@@ -40,7 +40,7 @@ toolhead = printer.lookup_object("toolhead")  # typed as ToolHead
 
 See [CHANGELOG.md](CHANGELOG.md) for release notes.
 
-Hand-refined sections are marked `# hand-refined:` in the `.pyi` files — grep before running stubgen.
+Hand-refined sections are marked `# hand-refined:` in the `.pyi` files - grep before running stubgen.
 
 ## Development
 
