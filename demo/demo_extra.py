@@ -22,14 +22,12 @@ class DemoExtra:
 
     def cmd_demo_beep(self, gcmd: GCodeCommand) -> None:
         count: int = gcmd.get_int("COUNT", 1, minval=1, maxval=10)
-        gcmd.respond_info(f"beep x{count} (multiplier={self.multiplier})", True)
+        gcmd.respond_info(f"beep x{count} (multiplier={self.multiplier})")
 
     def cmd_demo_status(self, gcmd: GCodeCommand) -> None:
         toolhead: ToolHead = self.printer.lookup_object("toolhead")
         pos = toolhead.get_position()
-        gcmd.respond_info(
-            f"position x={pos[0]:.3f} y={pos[1]:.3f} z={pos[2]:.3f}", True
-        )
+        gcmd.respond_info(f"position x={pos[0]:.3f} y={pos[1]:.3f} z={pos[2]:.3f}")
 
 
 def load_config(config: ConfigWrapper) -> DemoExtra:
