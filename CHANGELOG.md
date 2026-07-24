@@ -1,5 +1,9 @@
 # Changelog
 
+## 0.3.1
+
+- Fix `GCodeCommand.respond_info` typing so `log` is optional (was `Callable[[str, bool], None]`)
+
 ## 0.3.0
 
 Hand-refined overloads beyond stubgen output:
